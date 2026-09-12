@@ -1,0 +1,9 @@
+ok - fm-review-diff falls back to recorded pr_head when pull head cannot be fetched
+ok - fm-review-diff fetches refs/pull/<n>/head when pr_head= is absent
+ok - fm-review-diff prefers freshly fetched PR head over a stale recorded pr_head=
+ok - fm-review-diff without pr= keeps the worktree-branch diff
+ok - fm-review-diff falls back to local branch with a warning when PR head is unreachable
+ok - fm-review-diff reviews a local-only task against a local default branch that contains origin
+ok - fm-review-diff keeps origin as the review base when the local default branch trails it
+ok - fm-review-diff keeps the origin base for a PR-delivered task on a local-only project
+ok - fm-review-diff keeps the origin base for a task that records no delivery mode

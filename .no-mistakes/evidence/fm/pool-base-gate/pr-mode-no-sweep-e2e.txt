@@ -1,0 +1,29 @@
+== 1. captain's local-only project, origin exists but is never pushed to ==
+== 2. first task ships an approved feature; fm-merge-local lands it on LOCAL main ==
+   merge-local: merged fm/knotkin-feature-r1 into local main (943aa32 -> 9df488a) in /tmp/knotkin-e2e.N0p6RC/project
+   local main:  9df488a feat: the approved feature
+   origin/main: 943aa32 initial   <- feature was never pushed
+
+== 3. pooled slot allocated before the merge; next local-only task spawns into it ==
+   spawn: warning: /tmp/knotkin-e2e.N0p6RC/home/data/knotkin-next-r1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+   spawn: spawned knotkin-next-r1 harness=codex kind=ship mode=no-mistakes yolo=off window=firstmate:fm-knotkin-next-r1 worktree=/tmp/knotkin-e2e.N0p6RC/pool
+   pooled HEAD app.txt:
+     | v1
+
+== 4. the worker commits its own change on fm/knotkin-next-r1 and the review diff is taken ==
+   diff base: origin/main
+    app.txt | 1 +
+    1 file changed, 1 insertion(+)
+   
+   diff --git a/app.txt b/app.txt
+   index 626799f..313e2d2 100644
+   --- a/app.txt
+   +++ b/app.txt
+   @@ -1 +1,2 @@
+    v1
+   +new work from this task
+
+== verdict ==
+   commits this PR-destined branch would carry to the remote:
+     | 0136d10 feat: this task's own change
+   PASS: only this task's own commit is on the PR-destined branch.

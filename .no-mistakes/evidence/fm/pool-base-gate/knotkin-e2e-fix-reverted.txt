@@ -1,0 +1,36 @@
+== 1. captain's local-only project, origin exists but is never pushed to ==
+== 2. first task ships an approved feature; fm-merge-local lands it on LOCAL main ==
+   merge-local: merged fm/knotkin-feature-r1 into local main (feef6ab -> 2dca79a) in /tmp/knotkin-e2e.hglhdt/project
+   local main:  2dca79a feat: the approved feature
+   origin/main: feef6ab initial   <- feature was never pushed
+
+== 3. pooled slot allocated before the merge; next local-only task spawns into it ==
+   spawn: warning: /tmp/knotkin-e2e.hglhdt/home/data/knotkin-next-r1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode local-only - confirm its definition of done matches
+   spawn: spawned knotkin-next-r1 harness=codex kind=ship mode=local-only yolo=off window=firstmate:fm-knotkin-next-r1 worktree=/tmp/knotkin-e2e.hglhdt/pool
+   pooled HEAD app.txt:
+     | v1
+
+== 4. the worker commits its own change on fm/knotkin-next-r1 and the review diff is taken ==
+   diff base: origin/main
+    app.txt | 1 +
+    1 file changed, 1 insertion(+)
+   
+   diff --git a/app.txt b/app.txt
+   index 626799f..313e2d2 100644
+   --- a/app.txt
+   +++ b/app.txt
+   @@ -1 +1,2 @@
+    v1
+   +new work from this task
+
+== verdict ==
+   what landing this branch would do to local main:
+     | diff --git a/app.txt b/app.txt
+     | index ee30d1a..313e2d2 100644
+     | --- a/app.txt
+     | +++ b/app.txt
+     | @@ -1,2 +1,2 @@
+     |  v1
+     | -APPROVED FEATURE the captain just accepted
+     | +new work from this task
+   FAIL: the branch REVERTS the approved feature the captain just accepted.

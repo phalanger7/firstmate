@@ -1,0 +1,12 @@
+ok - linked spawning home: spawning preserves the primary before any refresh
+ok - linked spawning home: scout preserves the primary before any refresh
+ok - a stale pooled worktree refreshes to current origin/main before a crew branch is created
+ok - a stale pooled worktree resolves and refreshes a non-main default branch
+not ok - spawn launched from origin's tip and dropped locally landed work
+spawn-suite-exit=
+index 0000000..ee3c34d
+--- /dev/null
++++ b/landed-locally.txt
+@@ -0,0 +1 @@
++approved work that was never pushed
+review-suite-exit=
